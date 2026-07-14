@@ -10,14 +10,14 @@ export const MOCK_PRODUCTS: Product[] = [
   // BEAUTY (10)
   { id: "b1", name: "Radiant Skin Serum", price: 45.00, category: "beauty", imageUrl: "/images/beauty_serum.png" },
   { id: "b2", name: "Hydrating Face Cream", price: 32.50, category: "beauty", imageUrl: "/images/beauty_cream.png" },
-  { id: "b3", name: "Vitamin C Brightening Drops", price: 38.00, category: "beauty", imageUrl: "https://placehold.co/600x800/ffefef/4a4a4a?text=Vitamin+C" },
-  { id: "b4", name: "Purifying Clay Mask", price: 28.00, category: "beauty", imageUrl: "https://placehold.co/600x800/e8f4f8/4a4a4a?text=Clay+Mask" },
+  { id: "b3", name: "Vitamin C Brightening Drops", price: 38.00, category: "beauty", imageUrl: "/images/beauty_vitamin_c.png" },
+  { id: "b4", name: "Purifying Clay Mask", price: 28.00, category: "beauty", imageUrl: "/images/beauty_clay_mask.png" },
   { id: "b5", name: "Rosewater Facial Toner", price: 22.00, category: "beauty", imageUrl: "https://placehold.co/600x800/f8e8f2/4a4a4a?text=Rosewater+Toner" },
   { id: "b6", name: "Overnight Repair Night Cream", price: 55.00, category: "beauty", imageUrl: "https://placehold.co/600x800/e8e8f8/4a4a4a?text=Night+Cream" },
   { id: "b7", name: "Gentle Foaming Cleanser", price: 26.00, category: "beauty", imageUrl: "https://placehold.co/600x800/f0f8e8/4a4a4a?text=Cleanser" },
   { id: "b8", name: "Exfoliating Walnut Scrub", price: 30.00, category: "beauty", imageUrl: "https://placehold.co/600x800/f8f0e8/4a4a4a?text=Walnut+Scrub" },
   { id: "b9", name: "Hyaluronic Acid Gel", price: 42.00, category: "beauty", imageUrl: "https://placehold.co/600x800/e8f8f8/4a4a4a?text=Hyaluronic+Gel" },
-  { id: "b10", name: "Revitalizing Eye Cream", price: 36.00, category: "beauty", imageUrl: "https://placehold.co/600x800/f8e8e8/4a4a4a?text=Eye+Cream" },
+  { id: "b10", name: "Revitalizing Eye Cream", price: 36.00, category: "beauty", imageUrl: "/images/beauty_eye_cream.png" },
 
   // HERBAL (10) - Akschan Group Inspired
   { id: "h1", name: "Akschan Ashwagandha Extract", price: 24.00, category: "herbal", imageUrl: "/images/herbal_ashwagandha.png" },
