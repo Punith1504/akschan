@@ -25,11 +25,11 @@ export const MOCK_PRODUCTS: Product[] = [
   { id: "h3", name: "Akschan Natural Haircare Oil", price: 35.00, category: "herbal", imageUrl: "https://placehold.co/600x800/f3f6e8/4a4a4a?text=Haircare+Oil" },
   { id: "h4", name: "Akschan Herbal Skincare Cream", price: 29.00, category: "herbal", imageUrl: "https://placehold.co/600x800/fff8e1/4a4a4a?text=Skincare+Cream" },
   { id: "h5", name: "Akschan Scalp Nourishment Serum", price: 32.00, category: "herbal", imageUrl: "https://placehold.co/600x800/e8f6e8/4a4a4a?text=Scalp+Serum" },
-  { id: "h6", name: "Akschan Brahmi Brain Tonic", price: 26.00, category: "herbal", imageUrl: "https://placehold.co/600x800/f6e8e8/4a4a4a?text=Brain+Tonic" },
-  { id: "h7", name: "Akschan Neem Purifying Wash", price: 21.00, category: "herbal", imageUrl: "https://placehold.co/600x800/e8e8f6/4a4a4a?text=Neem+Wash" },
-  { id: "h8", name: "Akschan Triphala Digest", price: 19.50, category: "herbal", imageUrl: "https://placehold.co/600x800/f6f6e8/4a4a4a?text=Triphala" },
-  { id: "h9", name: "Akschan Tulsi Immunity Drops", price: 25.00, category: "herbal", imageUrl: "https://placehold.co/600x800/e8f6f6/4a4a4a?text=Immunity+Drops" },
-  { id: "h10", name: "Akschan Amla Vitamin C Pure", price: 22.00, category: "herbal", imageUrl: "https://placehold.co/600x800/f6e8f6/4a4a4a?text=Amla+Pure" },
+  { id: "h6", name: "Akschan Brahmi Brain Tonic", price: 26.00, category: "herbal", imageUrl: "/images/herbal_brain_tonic.png" },
+  { id: "h7", name: "Akschan Neem Purifying Wash", price: 21.00, category: "herbal", imageUrl: "/images/herbal_neem_wash.png" },
+  { id: "h8", name: "Akschan Triphala Digest", price: 19.50, category: "herbal", imageUrl: "/images/herbal_triphala.png" },
+  { id: "h9", name: "Akschan Tulsi Immunity Drops", price: 25.00, category: "herbal", imageUrl: "/images/herbal_immunity_drops.png" },
+  { id: "h10", name: "Akschan Amla Vitamin C Pure", price: 22.00, category: "herbal", imageUrl: "/images/herbal_amla_pure.png" },
 
   // FOOD (10)
   { id: "f1", name: "Organic Honey", price: 12.00, category: "food", imageUrl: "/images/food_honey.png" },
