@@ -1,65 +1,113 @@
-import Image from "next/image";
+"use client";
+
+import * as React from "react"
+import { MOCK_PRODUCTS } from "@/lib/mock-data"
+import { ProductCard } from "@/components/product/ProductCard"
+import { useCart } from "@/lib/cart-context"
+import { NeumorphicButton } from "@/components/ui/NeumorphicButton"
+import { PrimaryCTA } from "@/components/ui/PrimaryCTA"
+import { Marquee } from "@/components/ui/Marquee"
+import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function Home() {
+  const { addItem } = useCart()
+  const categories = ["beauty", "herbal", "food", "textiles"]
+  
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
+      
+      {/* Bento Grid Hero */}
+      <section className="relative pt-24 pb-16 px-6 max-w-[1400px] mx-auto w-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[250px] md:auto-rows-[320px]">
+          
+          {/* Main Statement */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
+            className="md:col-span-8 md:row-span-2 neumorphic rounded-[2.5rem] p-12 flex flex-col justify-center relative overflow-hidden"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10 translate-x-1/4 -translate-y-1/4" />
+            <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 leading-[1.05]">
+              Elevate your <br/>
+              <span className="text-foreground/40 font-light">daily rituals.</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-foreground/60 max-w-xl mb-12 font-light">
+              Discover a curated selection of premium beauty, herbal supplements, and handwoven textiles.
+            </p>
+            <div className="flex gap-4">
+              <PrimaryCTA className="px-10 py-5 text-lg">Shop Collection</PrimaryCTA>
+            </div>
+          </motion.div>
+
+          {/* Bento Item 1 - Featured Product */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+            className="md:col-span-4 md:row-span-1 rounded-[2.5rem] overflow-hidden relative group cursor-pointer shadow-xl"
           >
-            Documentation
-          </a>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={MOCK_PRODUCTS[0].imageUrl} alt="Featured Beauty" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            <div className="absolute bottom-8 left-8 text-white">
+              <p className="text-xs font-bold opacity-80 uppercase tracking-[0.2em] mb-2">New Arrival</p>
+              <h3 className="text-3xl font-bold">{MOCK_PRODUCTS[0].name}</h3>
+            </div>
+          </motion.div>
+
+          {/* Bento Item 2 */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+            className="md:col-span-4 md:row-span-1 bg-foreground text-background rounded-[2.5rem] p-10 flex flex-col justify-between"
+          >
+            <h3 className="text-4xl font-semibold leading-[1.1] tracking-tight">
+              Pure.<br/>Organic.<br/>Sourced globally.
+            </h3>
+            <Link href="/food" className="inline-flex items-center gap-2 text-sm uppercase tracking-widest hover:opacity-70 transition-opacity mt-4 font-bold">
+              Explore Food &rarr;
+            </Link>
+          </motion.div>
+
         </div>
-      </main>
+      </section>
+
+      <div className="py-8">
+        <Marquee text="Free international shipping on orders over $150 • Premium quality guaranteed • " />
+      </div>
+
+      {/* Categories */}
+      <div className="max-w-[1400px] mx-auto px-6 py-20 w-full flex flex-col gap-32">
+        {categories.map((category) => {
+          const categoryProducts = MOCK_PRODUCTS.filter(p => p.category === category).slice(0, 4)
+          return (
+            <motion.section 
+              key={category}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <div className="flex items-end justify-between mb-12 pb-6 border-b border-foreground/10">
+                <div>
+                  <h2 className="text-5xl font-bold tracking-tighter capitalize mb-3">{category}</h2>
+                  <p className="text-foreground/60 text-xl font-light">Curated essentials for your {category} routine.</p>
+                </div>
+                <Link href={`/${category}`} className="hidden sm:inline-block font-semibold hover:text-primary/70 transition-colors uppercase tracking-widest text-sm">
+                  View Collection &rarr;
+                </Link>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {categoryProducts.map(product => (
+                  <ProductCard 
+                    key={product.id} 
+                    product={product} 
+                    onAddToCart={addItem} 
+                  />
+                ))}
+              </div>
+            </motion.section>
+          )
+        })}
+      </div>
     </div>
-  );
+  )
 }
