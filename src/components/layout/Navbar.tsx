@@ -35,15 +35,12 @@ export function Navbar() {
     >
       <div className="glass max-w-7xl mx-auto rounded-full px-6 py-3.5 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <button className="md:hidden p-2 -ml-2 rounded-full hover:bg-foreground/5 transition-colors">
-            <Menu className="w-5 h-5" />
-          </button>
-          <Link href="/" className="font-bold text-xl tracking-tight uppercase">
+          <Link href="/" className="font-bold text-lg md:text-xl tracking-tight uppercase">
             Punni
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+        <nav className="flex items-center gap-3 md:gap-8 text-xs md:text-sm font-medium">
           <Link href="/beauty" className="hover:text-primary/70 transition-colors">Beauty</Link>
           <Link href="/herbal" className="hover:text-primary/70 transition-colors">Herbal</Link>
           <Link href="/food" className="hover:text-primary/70 transition-colors">Food</Link>
