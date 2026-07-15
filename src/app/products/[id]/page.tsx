@@ -6,7 +6,7 @@ import { useCart } from "@/lib/cart-context";
 import { PrimaryCTA } from "@/components/ui/PrimaryCTA";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, Shield, Truck } from "lucide-react";
+import { ArrowLeft, Check, Shield, Truck, Users, Info, List, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
@@ -56,11 +56,42 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             <h1 className="text-5xl md:text-6xl font-bold tracking-tighter mb-6 leading-tight">{product.name}</h1>
             <p className="text-4xl font-light mb-8">${product.price.toFixed(2)}</p>
             
-            <div className="prose prose-lg text-foreground/70 mb-12">
-              <p>
-                Experience the unmatched quality of our {product.name}. 
-                Carefully crafted and sustainably sourced, this product represents the pinnacle of our {product.category} collection. Designed for those who appreciate the finer things in life.
-              </p>
+            <div className="prose prose-lg text-foreground/70 mb-8">
+              {product.description && <p className="text-lg">{product.description}</p>}
+            </div>
+
+            {product.boughtLastMonth && (
+              <div className="mb-10 flex items-center gap-2 text-sm text-orange-600/90 font-medium bg-orange-500/10 px-4 py-2 rounded-lg self-start inline-flex">
+                <Users className="w-4 h-4" />
+                <span>{product.boughtLastMonth.toLocaleString()}+ bought in past month</span>
+              </div>
+            )}
+
+            <div className="flex flex-col gap-8 mb-12">
+              {product.uses && (
+                <div>
+                  <h3 className="flex items-center gap-2 text-xl font-bold mb-2"><Sparkles className="w-5 h-5 text-primary" /> Uses</h3>
+                  <p className="text-foreground/70">{product.uses}</p>
+                </div>
+              )}
+              {product.whyToUse && (
+                <div>
+                  <h3 className="flex items-center gap-2 text-xl font-bold mb-2"><Check className="w-5 h-5 text-primary" /> Why Choose This?</h3>
+                  <p className="text-foreground/70">{product.whyToUse}</p>
+                </div>
+              )}
+              {product.howToUse && (
+                <div>
+                  <h3 className="flex items-center gap-2 text-xl font-bold mb-2"><Info className="w-5 h-5 text-primary" /> How To Use</h3>
+                  <p className="text-foreground/70">{product.howToUse}</p>
+                </div>
+              )}
+              {product.data && (
+                <div>
+                  <h3 className="flex items-center gap-2 text-xl font-bold mb-2"><List className="w-5 h-5 text-primary" /> Specifications</h3>
+                  <p className="text-foreground/70 text-sm tracking-wide font-medium">{product.data}</p>
+                </div>
+              )}
             </div>
 
             <GlassCard className="p-8 mb-10 flex flex-col gap-6 rounded-[2rem]">

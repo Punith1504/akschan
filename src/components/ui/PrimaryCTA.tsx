@@ -3,6 +3,7 @@
 import * as React from "react"
 import { cn } from "@/lib/utils/tailwind"
 import { motion, HTMLMotionProps } from "framer-motion"
+import { triggerHaptic } from "@/lib/haptic"
 
 export interface PrimaryCTAProps extends HTMLMotionProps<"button"> {
   children: React.ReactNode
@@ -13,6 +14,10 @@ export const PrimaryCTA = React.forwardRef<HTMLButtonElement, PrimaryCTAProps>(
     return (
       <motion.button
         ref={ref}
+        onClick={(e) => {
+          triggerHaptic(50)
+          if (props.onClick) props.onClick(e)
+        }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className={cn(

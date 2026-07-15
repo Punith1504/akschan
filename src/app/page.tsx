@@ -7,24 +7,27 @@ import { useCart } from "@/lib/cart-context"
 import { NeumorphicButton } from "@/components/ui/NeumorphicButton"
 import { PrimaryCTA } from "@/components/ui/PrimaryCTA"
 import { Marquee } from "@/components/ui/Marquee"
+import { AutoProductCarousel } from "@/components/ui/AutoProductCarousel"
 import { motion } from "framer-motion"
 import Link from "next/link"
 
 export default function Home() {
   const { addItem } = useCart()
   const categories = ["beauty", "herbal", "food", "textiles"]
+  const trendingProducts = MOCK_PRODUCTS.filter(p => p.isTrending).slice(0, 8)
+  const recommendedProducts = MOCK_PRODUCTS.filter(p => p.isRecommended).slice(0, 8)
   
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
       
       {/* Bento Grid Hero */}
       <section className="relative pt-24 pb-16 px-6 max-w-[1400px] mx-auto w-full">
-        <div className="grid grid-cols-12 gap-2 md:gap-6 auto-rows-[120px] sm:auto-rows-[180px] md:auto-rows-[320px]">
+        <div className="grid grid-cols-12 gap-2 md:gap-6 auto-rows-min md:auto-rows-[320px]">
           
           {/* Main Statement */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-            className="col-span-8 row-span-2 neumorphic rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-12 flex flex-col justify-center relative overflow-hidden"
+            className="col-span-12 md:col-span-8 row-span-2 neumorphic rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-12 flex flex-col justify-center relative overflow-hidden min-h-[300px] md:min-h-0"
           >
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10 translate-x-1/4 -translate-y-1/4" />
             <h1 className="text-2xl sm:text-4xl md:text-8xl font-bold tracking-tighter mb-4 md:mb-8 leading-[1.05]">
@@ -40,10 +43,11 @@ export default function Home() {
           </motion.div>
 
           {/* Bento Item 1 - Featured Product */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-            className="col-span-4 row-span-1 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden relative group cursor-pointer shadow-xl"
-          >
+          <Link href={`/products/${MOCK_PRODUCTS[0].id}`} passHref legacyBehavior>
+            <motion.a 
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+              className="col-span-12 md:col-span-4 row-span-1 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden relative group cursor-pointer shadow-xl min-h-[250px] md:min-h-0 block"
+            >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={MOCK_PRODUCTS[0].imageUrl} alt="Featured Beauty" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -51,12 +55,13 @@ export default function Home() {
               <p className="text-xs font-bold opacity-80 uppercase tracking-[0.2em] mb-2">New Arrival</p>
               <h3 className="text-lg sm:text-xl md:text-3xl font-bold">{MOCK_PRODUCTS[0].name}</h3>
             </div>
-          </motion.div>
-
+          </motion.a>
+          </Link>
+          
           {/* Bento Item 2 */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-            className="col-span-4 row-span-1 bg-foreground text-background rounded-[1.5rem] md:rounded-[2.5rem] p-5 md:p-10 flex flex-col justify-between"
+            className="col-span-12 md:col-span-4 row-span-1 bg-foreground text-background rounded-[1.5rem] md:rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between min-h-[250px] md:min-h-0"
           >
             <h3 className="text-xl sm:text-2xl md:text-4xl font-semibold leading-[1.1] tracking-tight">
               Pure.<br/>Organic.<br/>Sourced globally.
@@ -73,8 +78,12 @@ export default function Home() {
         <Marquee text="Free international shipping on orders over $150 • Premium quality guaranteed • " />
       </div>
 
+      {/* Recommended & Trending Sections */}
+      <AutoProductCarousel products={recommendedProducts} title="Recommended for You" />
+      <AutoProductCarousel products={trendingProducts} title="Trending Now" />
+
       {/* Categories */}
-      <div className="max-w-[1400px] mx-auto px-6 py-20 w-full flex flex-col gap-32">
+      <div className="max-w-[1400px] mx-auto px-6 py-12 w-full flex flex-col gap-32">
         {categories.map((category) => {
           const categoryProducts = MOCK_PRODUCTS.filter(p => p.category === category).slice(0, 4)
           return (
